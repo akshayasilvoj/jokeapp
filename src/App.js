@@ -9,6 +9,9 @@ import { Container } from 'reactstrap';
 function App() {
   const [year, setYear] = useState('2023');
   const [joke, setJoke] = useState('');
+  const [setup, setSetup] = useState('');
+  const [delivery, setDelivery] = useState('');
+  const [jokeType, setJokeType] = useState('');
 
   const getYear = () => {
     const date = new Date();
@@ -16,33 +19,66 @@ function App() {
     return year;
   };
 
+  const submitJokeSerachData = (jokeType) => {
+    let type = '';
+    if (jokeType.single === jokeType.twopart) {
+      type = 'Any';
+    } else if (jokeType.single) {
+      type = 'single';
+    } else if (jokeType.twopart) {
+      type = 'twopart';
+    }
+
+    getJoke(type).then((res) => {
+      if (res.error) {
+        alert('Error');
+      } else {
+        if (res.type === 'twopart') {
+          setSetup(res.setup);
+          setDelivery(res.delivery);
+          setJokeType('twopart');
+        } else {
+          setJoke(res.joke);
+          setJokeType('single');
+        }
+      }
+    });
+  };
+
   useEffect(() => {
     setYear(getYear());
   }, []);
 
   useEffect(() => {
-    getJoke().then((res) => {
+    getJoke('Any').then((res) => {
       if (res.error) {
         alert('Error');
       } else {
         if (res.type === 'twopart') {
-          let newJoke = `Setup: ${res.setup}.\nDelivery: ${res.delivery}`;
-          setJoke(newJoke);
+          setSetup(res.setup);
+          setDelivery(res.delivery);
+          setJokeType('twopart');
         } else {
           setJoke(res.joke);
+          setJokeType('single');
         }
       }
     });
   }, []);
   return (
-    <Container>
+    <div className='d-flex flex-column justify-content-between align-items-center h-100'>
       <h1 className='app-header'>React Jokes App</h1>
-      <main>
-        <JokeSearch />
-        <JokeCard joke={joke} />
-      </main>
-      <AppFooter footerText={`&copy; Debajit Mallick ${year}`} />
-    </Container>
+      <Container className='d-flex flex-column align-items-center'>
+        <JokeSearch getJokeSerachData={submitJokeSerachData} />
+        <JokeCard
+          joke={joke}
+          jokeType={jokeType}
+          setup={setup}
+          delivery={delivery}
+        />
+      </Container>
+      <AppFooter footerText={`Debajit Mallick ${year}`} />
+    </div>
   );
 }
 

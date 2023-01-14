@@ -1,13 +1,15 @@
+import PropTypes from 'prop-types';
+
 const AppFooter = ({ footerText }) => {
   return (
-    <footer className='fixed-bottom text-center p-1 text-white bg-success'>
-      <small>{footerText}</small>
+    <footer className='text-center p-1 text-white bg-success w-100'>
+      <small>&copy; {footerText}</small>
     </footer>
   );
 };
 
-export default AppFooter;
-
-AppFooter.defaultProps = {
-  footerText: 'Debajit Mallick 2023',
+AppFooter.propTypes = {
+  footerText: PropTypes.string.isRequired,
 };
+
+export default AppFooter;
