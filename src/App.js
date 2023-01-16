@@ -19,17 +19,13 @@ function App() {
     return year;
   };
 
-  const submitJokeSerachData = (jokeType) => {
+  const submitJokeSerachData = (jokeType, jokeCategory) => {
     let type = '';
-    if (jokeType.single === jokeType.twopart) {
-      type = 'Any';
-    } else if (jokeType.single) {
-      type = 'single';
-    } else if (jokeType.twopart) {
-      type = 'twopart';
+    if (jokeType.length === 1) {
+      type = jokeType[0];
     }
 
-    getJoke(type).then((res) => {
+    getJoke(type, jokeCategory).then((res) => {
       if (res.error) {
         alert('Error');
       } else {
@@ -50,7 +46,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getJoke('Any').then((res) => {
+    getJoke().then((res) => {
       if (res.error) {
         alert('Error');
       } else {
