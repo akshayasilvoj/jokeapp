@@ -73,10 +73,6 @@ const JokeSearch = ({ getJokeSerachData }) => {
     setJokeCategory(newJokeCategory);
   };
 
-  useEffect(() => {
-    console.log(jokeCategory);
-  });
-
   return (
     <Form action='/'>
       <Row>

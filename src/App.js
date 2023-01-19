@@ -5,6 +5,7 @@ import getJoke from './api/JokeAPI';
 import { useEffect, useState } from 'react';
 import AppFooter from './component/layout/AppFooter';
 import { Container } from 'reactstrap';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [year, setYear] = useState('2023');
