@@ -59,7 +59,7 @@ const JokeCard = ({ joke, jokeType, setup, delivery }) => {
                 )
               }
             >
-              <span class='material-symbols-outlined'>content_copy</span>
+              <span className='material-symbols-outlined'>content_copy</span>
             </Button>
           </section>
         </CardBody>

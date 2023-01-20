@@ -1,8 +1,6 @@
 import axios from 'axios';
 
 export default function getJoke(type = '', categories = []) {
-  console.log('APi');
-  console.log(categories);
   let URL = 'https://v2.jokeapi.dev/joke/';
   if (categories.length > 0) {
     categories.forEach((category) => {

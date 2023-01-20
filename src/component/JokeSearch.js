@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const JokeSearch = ({ getJokeSerachData }) => {
@@ -76,7 +76,7 @@ const JokeSearch = ({ getJokeSerachData }) => {
   return (
     <Form action='/'>
       <Row>
-        <Col md='6'>
+        <Col md='3'>
           <Label for='jokeType'>Type</Label>
           {jokeSearchItem?.types.map((type) => (
             <FormGroup check key={type.value}>
@@ -91,28 +91,36 @@ const JokeSearch = ({ getJokeSerachData }) => {
           ))}
         </Col>
 
-        <Col md='6'>
+        <Col md='9'>
           <Label for='jokeType'>Category</Label>
-          {jokeSearchItem.categories.map((category) => (
-            <FormGroup check>
-              <Input
-                name={category.name}
-                type='checkbox'
-                value={category.value}
-                onChange={(e) => handleChangeCategory(e)}
-              />
-              <Label>{category.label}</Label>
-            </FormGroup>
-          ))}
+          <Row>
+            {jokeSearchItem.categories.map((category) => (
+              <Col md='4'>
+                <FormGroup check key={category.value}>
+                  <Input
+                    name={category.name}
+                    type='checkbox'
+                    value={category.value}
+                    onChange={(e) => handleChangeCategory(e)}
+                  />
+                  <Label>{category.label}</Label>
+                </FormGroup>
+              </Col>
+            ))}
+          </Row>
         </Col>
         <Col md='3'></Col>
       </Row>
-      <Button
-        type='button'
-        onClick={() => getJokeSerachData(jokeType, jokeCategory)}
-      >
-        Submit
-      </Button>
+      <Row>
+        <Col className='text-center mt-3 mb-3'>
+          <Button
+            type='button'
+            onClick={() => getJokeSerachData(jokeType, jokeCategory)}
+          >
+            Submit
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 };
