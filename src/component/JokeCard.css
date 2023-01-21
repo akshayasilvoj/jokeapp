@@ -6,3 +6,7 @@
 .joke-card-text {
   color: #eae7b1;
 }
+
+.joke-card-btn {
+  background-color: #a6bb8d !important;
+}

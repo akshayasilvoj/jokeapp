@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import './JokeSearch.css';
 
 const JokeSearch = ({ getJokeSerachData }) => {
   const jokeSearchItem = {
@@ -77,7 +78,9 @@ const JokeSearch = ({ getJokeSerachData }) => {
     <Form action='/'>
       <Row>
         <Col md='3'>
-          <Label for='jokeType'>Type</Label>
+          <Label for='jokeType' className='checkbox-header-label'>
+            Type
+          </Label>
           {jokeSearchItem?.types.map((type) => (
             <FormGroup check key={type.value}>
               <Input
@@ -92,7 +95,9 @@ const JokeSearch = ({ getJokeSerachData }) => {
         </Col>
 
         <Col md='9'>
-          <Label for='jokeType'>Category</Label>
+          <Label for='jokeType' className='checkbox-header-label'>
+            Category
+          </Label>
           <Row>
             {jokeSearchItem.categories.map((category) => (
               <Col md='4'>
@@ -115,6 +120,7 @@ const JokeSearch = ({ getJokeSerachData }) => {
         <Col className='text-center mt-3 mb-3'>
           <Button
             type='button'
+            className='submit-btn'
             onClick={() => getJokeSerachData(jokeType, jokeCategory)}
           >
             Submit

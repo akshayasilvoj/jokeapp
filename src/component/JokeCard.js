@@ -36,7 +36,7 @@ const JokeCard = ({ joke, jokeType, setup, delivery }) => {
   return (
     <>
       <ToastContainer />
-      <Card className='my-2 joke-card text-center p-3'>
+      <Card className='my-2 joke-card text-center'>
         <CardBody className='joke-card-body'>
           {jokeType === 'single' ? (
             <CardText className='joke-card-text'>{joke}</CardText>
@@ -50,7 +50,7 @@ const JokeCard = ({ joke, jokeType, setup, delivery }) => {
           )}
           <section className='option-container d-flex justify-content-center'>
             <Button
-              className='p-1 d-flex align-items-center'
+              className='p-1 d-flex align-items-center joke-card-btn'
               onClick={() =>
                 copyJokeToClipboard(
                   jokeType === 'single'

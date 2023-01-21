@@ -1,7 +1,5 @@
 .app-header {
-  color: #a6bb8d;
+  color: #eae7b1;
   text-align: center;
-  font-style: italic;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
+  letter-spacing: 0.3rem;
 }
