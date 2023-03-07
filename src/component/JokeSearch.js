@@ -1,6 +1,11 @@
 import { useState } from 'react';
-import { Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import './JokeSearch.css';
+import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background-color: #3c6255 !important;
+  border: none;
+`;
 
 const JokeSearch = ({ getJokeSerachData }) => {
   const jokeSearchItem = {
@@ -78,7 +83,7 @@ const JokeSearch = ({ getJokeSerachData }) => {
     <Form action='/'>
       <Row>
         <Col md='3'>
-          <Label for='jokeType' className='checkbox-header-label'>
+          <Label for='jokeType' className='fw-bold'>
             Type
           </Label>
           {jokeSearchItem?.types.map((type) => (
@@ -95,7 +100,7 @@ const JokeSearch = ({ getJokeSerachData }) => {
         </Col>
 
         <Col md='9'>
-          <Label for='jokeType' className='checkbox-header-label'>
+          <Label for='jokeType' className='fw-bold'>
             Category
           </Label>
           <Row>
@@ -120,7 +125,7 @@ const JokeSearch = ({ getJokeSerachData }) => {
         <Col className='text-center mt-3 mb-3'>
           <Button
             type='button'
-            className='submit-btn'
+            className='btn text-white'
             onClick={() => getJokeSerachData(jokeType, jokeCategory)}
           >
             Submit

@@ -1,6 +1,35 @@
-# Getting Started with Create React App
+<p align="center">
+  <img style="border-width: 0" width="400" height="400" src="./src/assets/logo.png" alt="Game Star logo">
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Joke React
+
+A simple Joke App that makes you laugh.
+
+---
+
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/debajit13/joke-react/graphs/commit-activity) [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://joke-react.netlify.app/) [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://github.com/debajit13/joke-react/discussions/5) [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+
+## Screenshots
+
+### Mobile Device:
+
+<img src="./src/assets/screenshots/screenshot_mobile.png" height='500px'>
+
+### Laptop Device:
+
+<img src="./src/assets/screenshots/screenshot_laptop.png" height='500px'>
+
+## Tech/ Framework Used
+
+## Technologies Used
+
+- ReactJS
+- ReactStrap
+- Bootstrap
+- React Toastify
+- Axios
+- Joke API
 
 ## Available Scripts
 
