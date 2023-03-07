@@ -1,4 +1,3 @@
-import './App.css';
 import JokeCard from './component/JokeCard';
 import JokeSearch from './component/JokeSearch';
 import getJoke from './api/JokeAPI';
@@ -6,6 +5,13 @@ import { useEffect, useState } from 'react';
 import AppFooter from './component/layout/AppFooter';
 import { Container } from 'reactstrap';
 import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
+
+const AppHeader = styled.h1`
+  color: #eae7b1;
+  text-align: center;
+  letter-spacing: 0.3rem;
+`;
 
 function App() {
   const [year, setYear] = useState('2023');
@@ -64,7 +70,7 @@ function App() {
   }, []);
   return (
     <div className='d-flex flex-column justify-content-between align-items-center h-100'>
-      <h1 className='app-header'>Jokes React</h1>
+      <AppHeader>Jokes React</AppHeader>
       <Container className='d-flex flex-column align-items-center'>
         <JokeSearch getJokeSerachData={submitJokeSerachData} />
         <JokeCard
