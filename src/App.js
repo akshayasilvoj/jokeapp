@@ -70,7 +70,7 @@ function App() {
   }, []);
   return (
     <div className='d-flex flex-column justify-content-between align-items-center h-100'>
-      <AppHeader>Jokes React</AppHeader>
+      <AppHeader>Joke React</AppHeader>
       <Container className='d-flex flex-column align-items-center'>
         <JokeSearch getJokeSerachData={submitJokeSerachData} />
         <JokeCard
