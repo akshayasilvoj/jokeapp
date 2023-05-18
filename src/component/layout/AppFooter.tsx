@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Footer = styled.footer`
@@ -9,16 +8,12 @@ const Footer = styled.footer`
   width: 100%;
 `;
 
-const AppFooter = ({ footerText }) => {
+const AppFooter: React.FC<{ footerText: string }> = ({ footerText }) => {
   return (
     <Footer>
       <small>&copy; {footerText}</small>
     </Footer>
   );
-};
-
-AppFooter.propTypes = {
-  footerText: PropTypes.string.isRequired,
 };
 
 export default AppFooter;
