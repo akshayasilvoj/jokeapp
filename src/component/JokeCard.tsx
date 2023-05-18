@@ -1,7 +1,6 @@
 import { Card, CardBody, CardText, Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 const JokeCardWrapper = styled.div`
   & .card {
@@ -15,8 +14,13 @@ const JokeCardWrapper = styled.div`
   }
 `;
 
-const JokeCard = ({ joke, jokeType, setup, delivery }) => {
-  async function copyJokeToClipboard(joke) {
+const JokeCard: React.FC<{
+  joke: string;
+  jokeType: string;
+  setup: string;
+  delivery: string;
+}> = ({ joke, jokeType, setup, delivery }) => {
+  async function copyJokeToClipboard(joke: string) {
     try {
       await navigator.clipboard.writeText(joke);
       toast.success('Joke Copied Successfully!', {
@@ -80,11 +84,6 @@ const JokeCard = ({ joke, jokeType, setup, delivery }) => {
       </JokeCardWrapper>
     </>
   );
-};
-
-JokeCard.propTypes = {
-  joke: PropTypes.string.isRequired,
-  jokeType: PropTypes.string.isRequired,
 };
 
 export default JokeCard;

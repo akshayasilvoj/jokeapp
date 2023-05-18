@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 import styled from 'styled-components';
 
@@ -7,7 +7,9 @@ const Button = styled.button`
   border: none;
 `;
 
-const JokeSearch = ({ getJokeSerachData }) => {
+const JokeSearch: React.FC<{
+  getJokeSearchData: (type: string[], category: string[]) => void;
+}> = ({ getJokeSearchData }) => {
   const jokeSearchItem = {
     types: [
       {
@@ -54,26 +56,28 @@ const JokeSearch = ({ getJokeSerachData }) => {
       },
     ],
   };
-  const [jokeType, setJokeType] = useState([]);
-  const [jokeCategory, setJokeCategory] = useState([]);
+  const [jokeType, setJokeType] = useState<string[]>([]);
+  const [jokeCategory, setJokeCategory] = useState<string[]>([]);
 
-  const handleChangeJokeType = (e) => {
+  const handleChangeJokeType = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newJokeType = [...jokeType];
     if (e.target.checked) {
-      newJokeType.push(e.target.value);
+      newJokeType.push((e.target as HTMLInputElement).value);
+      console.log(newJokeType);
     } else {
-      let index = newJokeType.indexOf(e.target.value);
+      let index = newJokeType.indexOf((e.target as HTMLInputElement).value);
       newJokeType.splice(index, 1);
+      console.log(newJokeType);
     }
     setJokeType(newJokeType);
   };
 
-  const handleChangeCategory = (e) => {
+  const handleChangeCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newJokeCategory = [...jokeCategory];
     if (e.target.checked) {
-      newJokeCategory.push(e.target.value);
+      newJokeCategory.push((e.target as HTMLInputElement).value);
     } else {
-      let index = newJokeCategory.indexOf(e.target.value);
+      let index = newJokeCategory.indexOf((e.target as HTMLInputElement).value);
       newJokeCategory.splice(index, 1);
     }
     setJokeCategory(newJokeCategory);
@@ -104,8 +108,8 @@ const JokeSearch = ({ getJokeSerachData }) => {
             Category
           </Label>
           <Row>
-            {jokeSearchItem.categories.map((category) => (
-              <Col md='4'>
+            {jokeSearchItem?.categories.map((category) => (
+              <Col md='4' key={category.name}>
                 <FormGroup check key={category.value}>
                   <Input
                     name={category.name}
@@ -126,7 +130,7 @@ const JokeSearch = ({ getJokeSerachData }) => {
           <Button
             type='button'
             className='btn text-white'
-            onClick={() => getJokeSerachData(jokeType, jokeCategory)}
+            onClick={() => getJokeSearchData(jokeType, jokeCategory)}
           >
             Submit
           </Button>

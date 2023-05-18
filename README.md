@@ -24,6 +24,7 @@ A simple Joke App that makes you laugh.
 
 ## Technologies Used
 
+- TypeScript
 - ReactJS
 - ReactStrap
 - Bootstrap
